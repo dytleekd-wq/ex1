@@ -3,722 +3,197 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andong Tourism Guide | 안동 관광 가이드</title>
-  <meta name="description" content="Discover Andong, the historical heart of Korean tradition. Plan your journey to Hahoe Folk Village, explore Confucian academies, experience authentic food, and build a custom route itinerary.">
-  <link rel="stylesheet" href="styles.css">
+  <title>Discover Andong (안동) - Foreign Tourist Guide & Companion</title>
+  <meta name="description" content="Ultimate travel guide to Andong, South Korea for international tourists. Discover UNESCO World Heritage villages, Dosan Seowon, Wolyeonggyo Bridge, Andong Jjimdak food, transport guides, and taxi flashcards.">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 
-  <!-- Traditional Decorative Top Border -->
-  <div class="traditional-border"></div>
-
-  <!-- Header -->
-  <header>
-    <div class="container nav-container">
-      <a href="#" class="logo">
-        <div>
-          <div class="logo-text">ANDONG<span>안동</span></div>
-          <div class="logo-sub">
-            <span class="lang-en">Spiritual Capital</span>
-            <span class="lang-ko">정신문화의 수도</span>
-          </div>
-        </div>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="#" class="brand">
+      <div class="brand-icon">👺</div>
+      <div class="brand-text">
+        <h1>Discover <span>ANDONG</span></h1>
+        <p>Gyeongsangbuk-do, Korea</p>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#attractions" class="nav-link active">Attractions</a></li>
+      <li><a href="#itinerary" class="nav-link">Itineraries</a></li>
+      <li><a href="#taxi-phrases" class="nav-link">Taxi Helper</a></li>
+      <li><a href="#transport" class="nav-link">Getting Here</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://www.andong.go.kr" target="_blank" rel="noopener noreferrer" class="city-hall-btn" id="cityHallBtn" title="Andong City Hall / 안동시청">
+        <span>🏛️</span>
+        <span id="navCityHallText">Andong City Hall</span>
       </a>
-      <nav class="nav-links">
-        <a href="#about"><span class="lang-en">Overview</span><span class="lang-ko">개요</span></a>
-        <a href="#attractions"><span class="lang-en">Attractions</span><span class="lang-ko">관광 명소</span></a>
-        <a href="#culture"><span class="lang-en">Culture & Food</span><span class="lang-ko">문화와 음식</span></a>
-        <a href="#planner"><span class="lang-en">Itinerary Planner</span><span class="lang-ko">코스 플래너</span></a>
-        <a href="#phrasebook"><span class="lang-en">Survival Korean</span><span class="lang-ko">생존 한국어</span></a>
-        <a href="#travel-info"><span class="lang-en">Travel Guide</span><span class="lang-ko">여행 안내</span></a>
-      </nav>
-      <div style="display: flex; align-items: center; gap: 12px;">
-        <a href="https://www.andong.go.kr" target="_blank" class="lang-toggle-btn" style="text-decoration: none;">
-          <span class="lang-en">🏛️ Andong City Hall</span>
-          <span class="lang-ko">🏛️ 안동시청</span>
-        </a>
-        <button class="lang-toggle-btn" id="lang-toggle" data-lang="en">🇰🇷 KO</button>
-        <button class="nav-cta" onclick="document.getElementById('planner').scrollIntoView();">
-          <span class="lang-en">Create Itinerary</span><span class="lang-ko">일정표 만들기</span>
-        </button>
+      <button class="lang-switcher-btn" id="langToggleBtn" onclick="toggleLanguage()" title="Switch Language / 언어 변경">
+        <span class="lang-icon">🌐</span>
+        <span id="langBtnText">한국어</span>
+      </button>
+      <button class="saved-trips-btn" onclick="document.querySelector('.chip[data-category=\'saved\']').click(); location.href='#attractions';">
+        <span id="navSavedText">⭐ My Saved Trip</span>
+        <span class="badge-count" id="savedCount">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="tag-pill">
+        <span>🇰🇷 Korea's Capital of Spirit & Culture</span>
+      </div>
+      <h1 class="hero-title">Experience the Living History of Andong</h1>
+      <p class="hero-subtitle">Step back in time to UNESCO World Heritage villages, centuries-old Confucian academies, glowing moonlight bridges, and mouthwatering culinary traditions.</p>
+      
+      <div class="hero-search-box">
+        <input type="text" id="searchInput" class="hero-search-input" placeholder="Search places, food (Jjimdak), heritage sites, night views...">
+        <button class="hero-search-btn" onclick="document.getElementById('searchInput').focus()">Search</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="about">
-    <div class="container" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;">
-      <div class="hero-content">
-        <span class="hero-subtitle">
-          <span class="lang-en">Culture, Heritage & Living History</span>
-          <span class="lang-ko">문화, 역사 그리고 살아있는 전통</span>
-        </span>
-        <h1 class="hero-title">
-          <span class="lang-en">Experience the Soul of <span>Korea</span></span>
-          <span class="lang-ko">한국의 <span>정신</span>을 만나다</span>
-        </h1>
-        <p class="hero-desc lang-en">Andong is South Korea's cultural capital, preserving 800 years of Confucian philosophy, historic Hanok villages, ancient wooden temples, and flavorful culinary legends like Andong Jjimdak.</p>
-        <p class="hero-desc lang-ko">안동은 유교 철학, 유서 깊은 한옥 마을, 유서 깊은 목조 사찰, 그리고 대표적인 향토 음식인 안동찜닭을 통해 800년의 역사를 간직한 한국 정신문화의 수도입니다.</p>
-        <div class="hero-btns">
-          <button class="btn btn-primary" onclick="document.getElementById('attractions').scrollIntoView();">
-            <span class="lang-en">Explore Attractions</span><span class="lang-ko">관광지 보기</span>
-          </button>
-          <button class="btn btn-secondary" onclick="document.getElementById('planner').scrollIntoView();">
-            <span class="lang-en">Try Itinerary Builder</span><span class="lang-ko">코스 플래너 해보기</span>
-          </button>
-        </div>
-      </div>
-      <div style="position: relative; display: flex; justify-content: center; align-items: center;">
-        <img src="hero_background.png" alt="Woryeonggyo Bridge Scenic View" class="main-culture-img" style="max-height: 480px; object-fit: cover; border: 4px double var(--primary);">
-        <div class="traditional-badge">
-          <div class="badge-number">5</div>
-          <div class="badge-text">
-            <span class="lang-en">UNESCO<br>Heritage Sites</span>
-            <span class="lang-ko">유네스코<br>세계유산 지정</span>
-          </div>
-        </div>
-      </div>
+  <!-- Filter Section -->
+  <section class="filter-section" id="attractions">
+    <div class="filter-chips">
+      <button class="chip active" data-category="all">🌟 All Spots</button>
+      <button class="chip" data-category="heritage">🏯 UNESCO Heritage</button>
+      <button class="chip" data-category="night">🌙 Night Views</button>
+      <button class="chip" data-category="food">🍗 Food & Markets</button>
+      <button class="chip" data-category="saved">⭐ My Saved Places</button>
     </div>
   </section>
 
-  <!-- Main Attractions Section -->
-  <section id="attractions">
-    <div class="container">
+  <!-- Main Grid Section -->
+  <main class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Must-Visit Destinations in Andong</h2>
+        <p class="section-desc">Hand-curated top attractions with essential info, English guides, and driver directions.</p>
+      </div>
+    </div>
+
+    <div class="card-grid" id="cardGrid">
+      <!-- Dynamic Render via script.js -->
+    </div>
+
+    <!-- Taxi Flashcard Survival Section -->
+    <section class="taxi-section" id="taxi-phrases">
+      <div style="max-width: 800px;">
+        <span style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 700; text-transform: uppercase;">🚖 Foreigner Survival Tool</span>
+        <h2 style="font-size: 1.8rem; font-weight: 800; margin: 0.3rem 0 0.8rem;">Taxi Driver Cards (Show to Driver)</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Many Korean taxi drivers may not speak fluent English. Tap any phrase below to copy or present the exact Korean destination screen directly to your driver!</p>
+      </div>
+      <div class="phrase-grid" id="taxiGrid">
+        <!-- Rendered via script.js -->
+      </div>
+    </section>
+
+    <!-- Itinerary Section -->
+    <section class="itinerary-section" id="itinerary">
       <div class="section-header">
-        <span class="section-subtitle">
-          <span class="lang-en">Heritage Sites</span>
-          <span class="lang-ko">세계유산 & 명소</span>
-        </span>
-        <h2 class="section-title">
-          <span class="lang-en">Must-Visit Locations</span>
-          <span class="lang-ko">안동 필수 방문지</span>
-        </h2>
-        <p class="lang-en" style="color: var(--text-muted);">Explore a selection of historic, educational, and scenic attractions that showcase Andong's unique heritage.</p>
-        <p class="lang-ko" style="color: var(--text-muted);">안동 고유의 전통문화와 수려한 경관을 간직한 역사 및 학문 명소들을 살펴보세요.</p>
+        <div>
+          <h2 class="section-title">Recommended Tourist Itineraries</h2>
+          <p class="section-desc">Optimized routes designed for smooth transit and maximum cultural experience.</p>
+        </div>
       </div>
 
-      <div class="grid-attractions">
-        
-        <!-- Hahoe Village -->
-        <div class="card-attraction">
-          <div class="card-img-wrapper">
-            <img src="hahoe_village.png" alt="Hahoe Folk Village" class="card-img">
-            <span class="card-badge">
-              <span class="lang-en">UNESCO World Heritage</span>
-              <span class="lang-ko">유네스코 세계유산</span>
-            </span>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <span class="lang-en">Hahoe Folk Village</span>
-              <span class="lang-ko">하회마을</span>
-            </h3>
-            <p class="card-text lang-en">A living museum where descendants of the Ryu clan have lived for over 600 years. Nestled by the S-shaped Nakdong River, this village preserves traditional thatched and tiled roof houses, ancient folk traditions, and the Hahoe Mask Dance.</p>
-            <p class="card-text lang-ko">풍산 류씨 가문이 600년 넘게 대를 이어 살아가고 있는 살아있는 민속 박물관입니다. S자 모양으로 굽이치는 낙동강에 둘러싸인 이 마을은 고가옥(와가와 초가), 유서 깊은 민속 신앙, 그리고 하회별신굿탈놀이를 고스란히 보존하고 있습니다.</p>
-            <div class="card-meta">
-              <span>⏱️ <span class="lang-en">Recommended: 3 hours</span><span class="lang-ko">추천 시간: 3시간</span></span>
-              <span>🚌 <span class="lang-en">Bus: No. 210</span><span class="lang-ko">버스: 210번</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Woryeonggyo Bridge -->
-        <div class="card-attraction woryeonggyo-card" id="woryeonggyo-card">
-          <div class="card-img-wrapper">
-            <div class="night-overlay"></div>
-            <img src="hero_background.png" alt="Woryeonggyo Bridge" class="card-img">
-            <span class="card-badge" id="woryeonggyo-badge">
-              <span class="lang-en">Scenic River Bridge</span>
-              <span class="lang-ko">아름다운 강변 교량</span>
-            </span>
-            <button class="toggle-night-btn" id="toggle-night" title="Switch to Night View">🌙</button>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <span class="lang-en">Woryeonggyo Bridge</span>
-              <span class="lang-ko">월영교</span>
-            </h3>
-            <p class="card-text lang-en">Korea's longest wooden footbridge, spanning the Nakdong River. It honors a tragic, beautiful 16th-century love story. Toggle the sun/moon icon on the image to see Woryeonggyo light up under the night sky!</p>
-            <p class="card-text lang-ko">낙동강을 가로지르는 한국에서 가장 긴 나무 인도교입니다. 16세기 조선시대 원이 엄마의 숭고하고 애절한 부부 사랑 이야기를 담고 있습니다. 카드 우측의 달 아이콘을 클릭하여 화려하게 불이 켜진 월영교의 야경을 감상해보세요!</p>
-            <div class="card-meta">
-              <span>⏱️ <span class="lang-en">Recommended: 1 hour</span><span class="lang-ko">추천 시간: 1시간</span></span>
-              <span>🚌 <span class="lang-en">Bus: No. 212</span><span class="lang-ko">버스: 212번</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dosanseowon Confucian Academy -->
-        <div class="card-attraction">
-          <div class="card-img-wrapper">
-            <div style="width:100%; height:100%; background: linear-gradient(135deg, var(--secondary-dark), var(--secondary)); display:flex; align-items:center; justify-content:center; color:white; font-size:4rem;">🏫</div>
-            <span class="card-badge">
-              <span class="lang-en">UNESCO World Heritage</span>
-              <span class="lang-ko">유네스코 세계유산</span>
-            </span>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <span class="lang-en">Dosanseowon Academy</span>
-              <span class="lang-ko">도산서원</span>
-            </h3>
-            <p class="card-text lang-en">Established in 1574 in honor of Yi Hwang, Korea's most famous Confucian scholar. The academy is positioned in a serene mountain valley, containing ancient lecture halls, libraries, and scenic paths overlooking Andong Lake.</p>
-            <p class="card-text lang-ko">퇴계 이황 선생의 학문적 업적과 덕행을 기리기 위해 1574년에 건립된 서원입니다. 고요한 산자락에 아늑하게 안긴 이곳은 고서들이 가득한 광명실, 강당(전교당)과 더불어 안동호가 한눈에 내려다보이는 아름다운 산책로를 지니고 있습니다.</p>
-            <div class="card-meta">
-              <span>⏱️ <span class="lang-en">Recommended: 1.5 hours</span><span class="lang-ko">추천 시간: 1.5시간</span></span>
-              <span>🚌 <span class="lang-en">Bus: No. 510</span><span class="lang-ko">버스: 510번</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Byeongsanseowon Confucian Academy -->
-        <div class="card-attraction">
-          <div class="card-img-wrapper">
-            <div style="width:100%; height:100%; background: linear-gradient(135deg, var(--primary-dark), var(--primary)); display:flex; align-items:center; justify-content:center; color:white; font-size:4rem;">🏞️</div>
-            <span class="card-badge">
-              <span class="lang-en">UNESCO World Heritage</span>
-              <span class="lang-ko">유네스코 세계유산</span>
-            </span>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <span class="lang-en">Byeongsanseowon Academy</span>
-              <span class="lang-ko">병산서원</span>
-            </h3>
-            <p class="card-text lang-en">Celebrated for its beautiful integration with nature. Its main wooden pavilion, Mandaeru, features an open architectural design that perfectly frames the white sandy river banks and sheer cliff mountains opposite.</p>
-            <p class="card-text lang-ko">자연 경관과의 탁월한 조화로 한국 서원 건축의 백미라 꼽힙니다. 대표 누각인 만대루는 기둥 사이로 가로막는 벽이 없어, 흐르는 낙동강과 병산의 울창한 수평 절벽을 마치 병풍 속 그림처럼 온전히 느낄 수 있습니다.</p>
-            <div class="card-meta">
-              <span>⏱️ <span class="lang-en">Recommended: 1.5 hours</span><span class="lang-ko">추천 시간: 1.5시간</span></span>
-              <span>🚗 <span class="lang-en">Car/Taxi only (Remote)</span><span class="lang-ko">차량/택시 권장</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bongjeongsa Temple -->
-        <div class="card-attraction">
-          <div class="card-img-wrapper">
-            <div style="width:100%; height:100%; background: linear-gradient(135deg, #444, #1a1b1e); display:flex; align-items:center; justify-content:center; color:white; font-size:4rem;">🏯</div>
-            <span class="card-badge">
-              <span class="lang-en">UNESCO World Heritage</span>
-              <span class="lang-ko">유네스코 세계유산</span>
-            </span>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              <span class="lang-en">Bongjeongsa Temple</span>
-              <span class="lang-ko">봉정사</span>
-            </h3>
-            <p class="card-text lang-en">Located on the slopes of Mt. Cheondeungsan, this temple is home to Geungnakjeon, the oldest surviving wooden building in Korea (dating to the 1200s). Known for its quiet, spiritual, and untouched mountain atmosphere.</p>
-            <p class="card-text lang-ko">천등산 기슭에 자리 잡은 이 절은 13세기 초(고려시대)에 축조된 한국의 가장 오래된 목조 건물인 극락전을 품고 있습니다. 때 묻지 않은 고즈넉한 산세 속에서 참선과 치유의 불교 철학을 경험할 수 있습니다.</p>
-            <div class="card-meta">
-              <span>⏱️ <span class="lang-en">Recommended: 1.5 hours</span><span class="lang-ko">추천 시간: 1.5시간</span></span>
-              <span>🚌 <span class="lang-en">Bus: No. 310</span><span class="lang-ko">버스: 310번</span></span>
-            </div>
-          </div>
-        </div>
-
+      <div class="itinerary-tabs">
+        <button class="itinerary-tab active" onclick="showItinerary('1day')">⚡ 1-Day Express Essential</button>
+        <button class="itinerary-tab" onclick="showItinerary('2day')">🌿 2-Day Culture & Heritage Relax</button>
       </div>
-    </div>
-  </section>
 
-  <!-- Culture & Dining Tabs Section -->
-  <section id="culture" class="section-dark">
-    <div class="container">
-      <div class="culture-showcase">
-        <div class="culture-text">
-          <span class="section-subtitle">
-            <span class="lang-en">Local Flavors & Customs</span>
-            <span class="lang-ko">지역 문화와 향토 음식</span>
-          </span>
-          <h2 style="font-size: 2.5rem; margin-bottom: 24px;">
-            <span class="lang-en">Discover Local Traditions</span>
-            <span class="lang-ko">안동의 고유 전통 양식</span>
-          </h2>
-          <p class="lang-en" style="color: #a3a6b0; margin-bottom: 24px;">Andong is not just a destination for sightseeing; it is an experience of living customs, rich recipes preserved for centuries, and ancient folk theater.</p>
-          <p class="lang-ko" style="color: #a3a6b0; margin-bottom: 24px;">안동은 단순한 구경거리가 아닌, 수백 년 동안 계승되어 온 생활 관습과 지혜, 풍미 깊은 요리 비법, 그리고 신명 나는 민속극이 살아 숨 쉬는 체험형 도시입니다.</p>
-          
-          <div class="culture-info-tabs">
-            <div class="tab-headers">
-              <button class="tab-btn active" data-tab="heritage">
-                <span class="lang-en">Mask Dance</span><span class="lang-ko">탈춤극</span>
-              </button>
-              <button class="tab-btn" data-tab="food">
-                <span class="lang-en">Local Food</span><span class="lang-ko">향토 음식</span>
-              </button>
-              <button class="tab-btn" data-tab="stay">
-                <span class="lang-en">Hanok Stays</span><span class="lang-ko">고택 체험</span>
-              </button>
-            </div>
-            
-            <!-- Heritage Tab -->
-            <div class="tab-content active" id="heritage-tab">
-              <h3 style="color: var(--primary); margin-bottom: 12px; font-family: sans-serif; font-size: 1.2rem;">
-                <span class="lang-en">Hahoe Mask Dance Drama (Talchum)</span>
-                <span class="lang-ko">하회별신굿탈놀이</span>
-              </h3>
-              <p class="lang-en" style="color: #d1d3d9; font-size: 0.95rem; margin-bottom: 16px;">This dramatic performance dates back to the Goryeo Dynasty. Using beautifully carved smiling wooden masks, the dance satirized corrupt aristocrats and monks, providing comic relief for common villagers. Shows are held regularly at Hahoe Village.</p>
-              <p class="lang-ko" style="color: #d1d3d9; font-size: 0.95rem; margin-bottom: 16px;">고려시대부터 계승된 서민 주도의 가면극입니다. 익살스러운 표정의 하회탈을 쓰고 지배 계급인 양반과 선비의 허세, 부패한 수도자의 위선을 풍자하며 지친 민중들의 스트레스를 해소하고 화합을 꾀했습니다. 주말마다 상설 공연이 진행됩니다.</p>
-              <a href="https://www.maskdance.com" target="_blank" style="color: var(--primary); font-size: 0.9rem; font-weight: 600;">
-                <span class="lang-en">Maskdance Festival Website &rarr;</span>
-                <span class="lang-ko">안동국제탈춤페스티벌 웹사이트 &rarr;</span>
-              </a>
-            </div>
-
-            <!-- Food Tab -->
-            <div class="tab-content" id="food-tab">
-              <h3 style="color: var(--primary); margin-bottom: 12px; font-family: sans-serif; font-size: 1.2rem;">
-                <span class="lang-en">Savor Andong Jjimdak & Salted Mackerel</span>
-                <span class="lang-ko">명물 안동찜닭과 간고등어</span>
-              </h3>
-              <p class="lang-en" style="color: #d1d3d9; font-size: 0.95rem;">Andong's food is famous nationwide:</p>
-              <p class="lang-ko" style="color: #d1d3d9; font-size: 0.95rem;">한국 전국에서 손꼽히는 독창적인 식문화를 지니고 있습니다:</p>
-              <div class="food-highlight">
-                <div class="food-icon">🍲</div>
-                <div>
-                  <h5 style="color: #fff; font-size: 0.95rem; font-family: sans-serif;">
-                    <span class="lang-en">Andong Jjimdak</span><span class="lang-ko">안동찜닭</span>
-                  </h5>
-                  <p class="lang-en" style="color: #a3a6b0; font-size: 0.85rem;">Braised chicken with soy sauce, garlic, glass noodles, potatoes, and red chili peppers. Sweet, savory, and spicy!</p>
-                  <p class="lang-ko" style="color: #a3a6b0; font-size: 0.85rem;">간장을 베이스로 하여 마늘, 당면, 감자, 그리고 매콤한 건고추를 푸짐하게 볶아낸 닭조림입니다. 달콤 짭조름하면서도 매콤한 끝 맛이 일품입니다.</p>
-                </div>
-              </div>
-              <div class="food-highlight">
-                <div class="food-icon">🐟</div>
-                <div>
-                  <h5 style="color: #fff; font-size: 0.95rem; font-family: sans-serif;">
-                    <span class="lang-en">Salted Mackerel (Gan-godeungeo)</span><span class="lang-ko">안동간고등어</span>
-                  </h5>
-                  <p class="lang-en" style="color: #a3a6b0; font-size: 0.85rem;">Traditionally salted to preserve the fish as it was carried from the eastern sea to inland Andong, giving it a rich, savory taste.</p>
-                  <p class="lang-ko" style="color: #a3a6b0; font-size: 0.85rem;">동해안 영덕에서 내륙 지방인 안동까지 고등어를 실어 나를 때 상하는 것을 방지하기 위해 천일염으로 염장 처리를 한 것에서 비롯된 전통 염장어입니다.</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Stay Tab -->
-            <div class="tab-content" id="stay-tab">
-              <h3 style="color: var(--primary); margin-bottom: 12px; font-family: sans-serif; font-size: 1.2rem;">
-                <span class="lang-en">Sleep in a 200-Year-Old Hanok</span>
-                <span class="lang-ko">200년 고택에서의 하룻밤</span>
-              </h3>
-              <p class="lang-en" style="color: #d1d3d9; font-size: 0.95rem; margin-bottom: 16px;">Experience "Ondol" (traditional Korean floor heating) and wake up to the quiet chirping of forest birds. Many heritage homes in Hahoe Folk Village offer private rooms with paper screens and organic local breakfasts prepared by host families.</p>
-              <p class="lang-ko" style="color: #d1d3d9; font-size: 0.95rem; margin-bottom: 16px;">전통 구들장을 사용하는 따뜻한 온돌방을 체험하고 상쾌한 대숲 바람과 새소리에 아침을 맞이해보세요. 하회마을 내 고택들은 전통 한지 창호 문창살이 돋보이는 객실과 건강한 시골 밥상을 대접합니다.</p>
-              <span style="color: var(--primary); font-size: 0.85rem; font-weight: 600;">
-                <span class="lang-en">Tip: Book early on platforms like Airbnb or the Andong Tourism portal, as rooms are limited!</span>
-                <span class="lang-ko">팁: 방수가 제한적이므로 네이버 예약, 에어비앤비 또는 고택포털을 통해 일찍 예약하시는 것을 권장합니다!</span>
-              </span>
-            </div>
+      <div id="itineraryContent">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-time">09:00 AM - 09:45 AM</div>
+            <div class="timeline-title">🚄 Arrival at KTX Andong Station</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Take KTX-Eum from Seoul Cheongnyangni (1 hr 50 mins). Take Bus #210 or Taxi to Hahoe Village.</p>
           </div>
-        </div>
-        
-        <div class="culture-images">
-          <img src="hahoe_mask.png" alt="Hahoe Mask Traditional Detail" id="culture-main-img" class="main-culture-img">
-          <div class="culture-floating-card">
-            <h4>
-              <span class="lang-en">Hahoe Mask</span><span class="lang-ko">하회탈</span>
-            </h4>
-            <p class="lang-en">Korea's national treasure, famed for its distinct movable jaw that expresses laughter or anger depending on the angle.</p>
-            <p class="lang-ko">움직이는 턱 구조 덕분에 보는 각도와 배우의 몸짓에 따라 때로는 파안대소로, 때로는 분노의 표정으로 입체적 변화를 보여주는 국보 문화재입니다.</p>
+          <div class="timeline-item">
+            <div class="timeline-time">10:30 AM - 01:30 PM</div>
+            <div class="timeline-title">🏡 Explore Andong Hahoe Folk Village</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Stroll among Joseon Dynasty hanok houses, visit Mansayeong, and cross river ferry to Buyongdae Cliff.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">02:00 PM - 03:00 PM</div>
+            <div class="timeline-title">🎭 Catch Hahoe Mask Dance (Talchum) Performance</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Enjoy the live comedy & satire mask dance drama performance at Hahoe Performance Hall.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">05:30 PM - 07:00 PM</div>
+            <div class="timeline-title">🍲 Feast on Andong Jjimdak at Gu-Sijang Market</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Head downtown for authentic spicy soy braised chicken with glass noodles & local cold beer or Andong Soju.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-time">07:30 PM - 09:00 PM</div>
+            <div class="timeline-title">🌙 Romantic Night Walk at Wolyeonggyo Wooden Bridge</div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Cross the glowing timber bridge, watch reflections on Nakdong river, and ride an illuminated Moon Boat!</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Interactive Route Builder Section -->
-  <section id="planner">
-    <div class="container">
+    <!-- Transportation Guide Section -->
+    <section id="transport" style="margin-bottom: 4rem;">
       <div class="section-header">
-        <span class="section-subtitle">
-          <span class="lang-en">Travel Smart</span>
-          <span class="lang-ko">스마트한 여정 계획</span>
-        </span>
-        <h2 class="section-title">
-          <span class="lang-en">Interactive Route Planner</span>
-          <span class="lang-ko">인터랙티브 코스 플래너</span>
-        </h2>
-        <p class="lang-en" style="color: var(--text-muted);">Choose your favorite spots on the left to dynamically generate a 1-day travel timeline with calculated transit and visiting times.</p>
-        <p class="lang-ko" style="color: var(--text-muted);">가고 싶은 목적지를 왼편 단추에서 선택하면 최적화된 동선과 차량 이동 시간, 그리고 하루 일정표 일람을 실시간으로 도출합니다.</p>
-      </div>
-
-      <div class="planner-widget">
-        <!-- Pickers -->
-        <div class="planner-selection">
-          <h3 class="planner-title">
-            <span class="lang-en">Select Attractions</span><span class="lang-ko">관광 명소 선택</span>
-          </h3>
-          <div class="attractions-picker">
-            
-            <div class="picker-item" data-id="hahoe">
-              <div class="picker-info">
-                <span class="picker-name">🛖 <span class="lang-en">Hahoe Folk Village</span><span class="lang-ko">하회마을</span></span>
-                <span class="picker-dur">
-                  <span class="lang-en">Recommended duration: 3 hours</span><span class="lang-ko">추천 소요시간: 3시간</span>
-                </span>
-              </div>
-              <div class="picker-action">+</div>
-            </div>
-
-            <div class="picker-item" data-id="woryeonggyo">
-              <div class="picker-info">
-                <span class="picker-name">🌉 <span class="lang-en">Woryeonggyo Bridge</span><span class="lang-ko">월영교</span></span>
-                <span class="picker-dur">
-                  <span class="lang-en">Recommended duration: 1 hour</span><span class="lang-ko">추천 소요시간: 1시간</span>
-                </span>
-              </div>
-              <div class="picker-action">+</div>
-            </div>
-
-            <div class="picker-item" data-id="dosan">
-              <div class="picker-info">
-                <span class="picker-name">🏫 <span class="lang-en">Dosanseowon Academy</span><span class="lang-ko">도산서원</span></span>
-                <span class="picker-dur">
-                  <span class="lang-en">Recommended duration: 1.5 hours</span><span class="lang-ko">추천 소요시간: 1.5시간</span>
-                </span>
-              </div>
-              <div class="picker-action">+</div>
-            </div>
-
-            <div class="picker-item" data-id="byeongsan">
-              <div class="picker-info">
-                <span class="picker-name">🏞️ <span class="lang-en">Byeongsanseowon Academy</span><span class="lang-ko">병산서원</span></span>
-                <span class="picker-dur">
-                  <span class="lang-en">Recommended duration: 1.5 hours</span><span class="lang-ko">추천 소요시간: 1.5시간</span>
-                </span>
-              </div>
-              <div class="picker-action">+</div>
-            </div>
-
-            <div class="picker-item" data-id="bongjeongsa">
-              <div class="picker-info">
-                <span class="picker-name">🏯 <span class="lang-en">Bongjeongsa Temple</span><span class="lang-ko">봉정사</span></span>
-                <span class="picker-dur">
-                  <span class="lang-en">Recommended duration: 1.5 hours</span><span class="lang-ko">추천 소요시간: 1.5시간</span>
-                </span>
-              </div>
-              <div class="picker-action">+</div>
-            </div>
-
-          </div>
+        <div>
+          <h2 class="section-title">Getting to & Around Andong</h2>
+          <p class="section-desc">Simple directions from major cities like Seoul, Busan, and Daegu.</p>
         </div>
-
-        <!-- Output Timeline -->
-        <div class="planner-timeline">
-          <h3 class="planner-title" style="display: flex; justify-content: space-between; align-items: center;">
-            <span class="lang-en">Your Day Timeline</span><span class="lang-ko">나의 하루 일정표</span>
-            <button class="nav-cta" id="export-route" style="display: none; padding: 6px 14px; font-size: 0.8rem;">
-              <span class="lang-en">📋 Copy Route</span><span class="lang-ko">📋 코스 복사하기</span>
-            </button>
-          </h3>
-          
-          <!-- Placeholder when empty -->
-          <div class="timeline-placeholder" id="timeline-placeholder">
-            <span style="font-size: 3rem;">🗓️</span>
-            <p class="lang-en">Your itinerary is empty.<br>Click attractions on the left to add them to your schedule starting at 9:00 AM.</p>
-            <p class="lang-ko">일정표가 비어 있습니다.<br>왼쪽에서 명소를 선택하면 오전 9시 시작 일정으로 정렬됩니다.</p>
-          </div>
-
-          <!-- Dynamic List -->
-          <div class="timeline-list" id="timeline-list" style="display: none;">
-            <!-- Appended via JS -->
-          </div>
-
-          <div class="planner-summary">
-            <div class="summary-stats">
-              <span class="summary-label">
-                <span class="lang-en">Total Time Required:</span><span class="lang-ko">총 예상 소요 시간:</span>
-              </span>
-              <span class="summary-val" id="total-duration">0 hrs</span>
-            </div>
-            <div class="summary-stats">
-              <span class="summary-label">
-                <span class="lang-en">Accumulated Driving Transit:</span><span class="lang-ko">총 차량 이동 시간:</span>
-              </span>
-              <span class="summary-val" id="transit-time">0 mins</span>
-            </div>
-            <p id="travel-tips" style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 8px;">
-              Add some attractions to plan your day!
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Survival Korean TTS Phrasebook Section -->
-  <section id="phrasebook" class="section-dark">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">
-          <span class="lang-en">Be Prepared</span><span class="lang-ko">여행 준비물</span>
-        </span>
-        <h2 class="section-title">
-          <span class="lang-en">Survival Korean Phrasebook</span><span class="lang-ko">여행 서바이벌 한국어 회화</span>
-        </h2>
-        <p class="lang-en" style="color: #a3a6b0;">Click any card to play standard spoken audio pronunciation. Useful phrases for transit, restaurants, and directions in Andong.</p>
-        <p class="lang-ko" style="color: #a3a6b0;">카드를 클릭하면 실제 발음을 읽어줍니다. 안동 버스 정류장, 식당, 길 찾기 등에서 즉각 활용할 수 있는 회화 모음입니다.</p>
-      </div>
-
-      <div class="phrasebook-grid">
-        
-        <!-- Phrase 1 -->
-        <div class="phrase-card" data-korean="안녕하세요">
-          <div class="phrase-korean">안녕하세요 <span>🔊</span></div>
-          <div class="phrase-english">Hello / Good day.</div>
-          <div class="phrase-romaji">"An-nyeong-ha-se-yo"</div>
-          <span class="phrase-category">
-            <span class="lang-en">Greeting</span><span class="lang-ko">인사</span>
-          </span>
-        </div>
-
-        <!-- Phrase 2 -->
-        <div class="phrase-card" data-korean="감사합니다">
-          <div class="phrase-korean">감사합니다 <span>🔊</span></div>
-          <div class="phrase-english">Thank you.</div>
-          <div class="phrase-romaji">"Gam-sa-ham-ni-da"</div>
-          <span class="phrase-category">
-            <span class="lang-en">Politeness</span><span class="lang-ko">정중함</span>
-          </span>
-        </div>
-
-        <!-- Phrase 3 -->
-        <div class="phrase-card" data-korean="화장실이 어디예요?">
-          <div class="phrase-korean">화장실이 어디예요? <span>🔊</span></div>
-          <div class="phrase-english">Where is the restroom?</div>
-          <div class="phrase-romaji">"Hwa-jang-sil-i eo-di-ye-yo?"</div>
-          <span class="phrase-category">
-            <span class="lang-en">Direction</span><span class="lang-ko">방향/길찾기</span>
-          </span>
-        </div>
-
-        <!-- Phrase 4 -->
-        <div class="phrase-card" data-korean="하회마을 어떻게 가요?">
-          <div class="phrase-korean">하회마을 어떻게 가요? <span>🔊</span></div>
-          <div class="phrase-english">How do I get to Hahoe Village?</div>
-          <div class="phrase-romaji">"Ha-hoe-ma-eul eo-tteo-ke ga-yo?"</div>
-          <span class="phrase-category">
-            <span class="lang-en">Direction</span><span class="lang-ko">방향/길찾기</span>
-          </span>
-        </div>
-
-        <!-- Phrase 5 -->
-        <div class="phrase-card" data-korean="안동찜닭 하나 주세요">
-          <div class="phrase-korean">안동찜닭 하나 주세요 <span>🔊</span></div>
-          <div class="phrase-english">One Andong Jjimdak, please.</div>
-          <div class="phrase-romaji">"An-dong-jjim-dak ha-na ju-se-yo"</div>
-          <span class="phrase-category">
-            <span class="lang-en">Dining</span><span class="lang-ko">식사</span>
-          </span>
-        </div>
-
-        <!-- Phrase 6 -->
-        <div class="phrase-card" data-korean="영어로 말씀해 주시겠어요?">
-          <div class="phrase-korean">영어로 말씀해 주시겠어요? <span>🔊</span></div>
-          <div class="phrase-english">Could you speak in English?</div>
-          <div class="phrase-romaji">"Yeong-eo-ro mal-sseum-hae ju-si-ges-seo-yo?"</div>
-          <span class="phrase-category">
-            <span class="lang-en">Emergency</span><span class="lang-ko">소통 비상대응</span>
-          </span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Travel Guide & Transportation Details -->
-  <section id="travel-info">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">
-          <span class="lang-en">Transit Guide</span><span class="lang-ko">교통 및 경로 안내</span>
-        </span>
-        <h2 class="section-title">
-          <span class="lang-en">Getting To & Around Andong</span><span class="lang-ko">안동 오시는 길 및 시내 교통</span>
-        </h2>
-        <p class="lang-en" style="color: var(--text-muted);">Practical guidelines on taking trains, buses, and local transport from South Korea's main hubs.</p>
-        <p class="lang-ko" style="color: var(--text-muted);">주요 거점에서 안동으로 가는 방법 및 시내버스 이용 노하우를 정리했습니다.</p>
       </div>
 
       <div class="transport-grid">
-        
-        <!-- Train KTX -->
         <div class="transport-card">
-          <div class="transport-header">
-            <div class="transport-icon">🚄</div>
-            <h4 class="transport-title">
-              <span class="lang-en">KTX-Eum Train (From Seoul)</span><span class="lang-ko">KTX-이음 고속철도 (서울발)</span>
-            </h4>
-          </div>
-          <div class="transport-list">
-            <div class="transport-step">
-              <div class="step-num">1</div>
-              <div class="step-details">
-                <h5>
-                  <span class="lang-en">Cheongnyangni Station &rarr; Andong Station</span>
-                  <span class="lang-ko">청량리역 &rarr; 안동역</span>
-                </h5>
-                <p class="lang-en">Take the KTX-Eum high-speed train. Travel time is around 2 hours. Tickets cost approximately ₩25,000.</p>
-                <p class="lang-ko">청량리역에서 KTX-이음을 타고 2시간 만에 신안동역에 도착합니다. 편도 운임은 약 25,000원입니다.</p>
-              </div>
-            </div>
-            <div class="transport-step">
-              <div class="step-num">2</div>
-              <div class="step-details">
-                <h5>
-                  <span class="lang-en">Arrival at Andong Station</span>
-                  <span class="lang-ko">안동역 하차</span>
-                </h5>
-                <p class="lang-en">The new station is located outside the downtown core. Taxi ranks and public bus bays are directly in front of the exit doors.</p>
-                <p class="lang-ko">안동역은 시 외곽에 신설되었습니다. 역사 문을 나서면 우측에 시내버스 정류장, 정면에 택시 승차장이 바로 펼쳐집니다.</p>
-              </div>
-            </div>
+          <div class="transport-icon">🚆</div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem;">From Seoul via KTX-Eum</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Board at <strong>Cheongnyangni Station (청량리역)</strong>. Travel time is just <strong>1 hour 50 minutes</strong> direct to KTX Andong Station.</p>
           </div>
         </div>
 
-        <!-- Local Bus -->
         <div class="transport-card">
-          <div class="transport-header">
-            <div class="transport-icon">🚌</div>
-            <h4 class="transport-title">
-              <span class="lang-en">Getting Around by Local Bus</span><span class="lang-ko">시내버스 노선 이용하기</span>
-            </h4>
-          </div>
-          <div class="transport-list">
-            <div class="transport-step">
-              <div class="step-num">1</div>
-              <div class="step-details">
-                <h5>
-                  <span class="lang-en">Bus 210 (To Hahoe Village)</span>
-                  <span class="lang-ko">210번 시내버스 (하회마을행)</span>
-                </h5>
-                <p class="lang-en">Runs hourly from Andong Station to Hahoe Village. Takes around 40 minutes. You can pay with a standard T-Money transit card.</p>
-                <p class="lang-ko">안동역에서 매시간 정각 근방에 하회마을로 출발합니다. 소요시간 약 40분이며 후불제 교통카드 및 선불 교통카드 모두 사용 가능합니다.</p>
-              </div>
-            </div>
-            <div class="transport-step">
-              <div class="step-num">2</div>
-              <div class="step-details">
-                <h5>
-                  <span class="lang-en">Bus 212 (To Woryeonggyo Bridge)</span>
-                  <span class="lang-ko">212번 시내버스 (월영교행)</span>
-                </h5>
-                <p class="lang-en">Connects the central bus station / train station to the Woryeonggyo wooden bridge area. Takes 25 minutes.</p>
-                <p class="lang-ko">안동 버스터미널 및 안동역에서 월영교 유원지로 들어가는 주 노선입니다. 약 25분이 소요됩니다.</p>
-              </div>
-            </div>
+          <div class="transport-icon">🚌</div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem;">Express Bus (Seoul / Busan)</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">From Seoul Express Bus Terminal or Busan Central Terminal to <strong>Andong Bus Terminal</strong> (approx. 2.5 hours).</p>
           </div>
         </div>
 
-        <!-- Navigation Tips -->
         <div class="transport-card">
-          <div class="transport-header">
-            <div class="transport-icon">🗺️</div>
-            <h4 class="transport-title">
-              <span class="lang-en">Survival Navigation Tips</span><span class="lang-ko">여행 서바이벌 내비게이션 팁</span>
-            </h4>
+          <div class="transport-icon">📱</div>
+          <div>
+            <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem;">Essential Apps in Korea</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">Use <strong>KakaoMap</strong> or <strong>Naver Map</strong> for bus routes. Use <strong>Kakao T</strong> for easy taxi hailing without speaking Korean.</p>
           </div>
-          <div class="transport-list">
-            <div class="transport-step">
-              <div class="step-num">1</div>
-              <div class="step-details">
-                <h5>
-                  <span class="lang-en">Download Naver Map or KakaoMap</span>
-                  <span class="lang-ko">네이버 지도 또는 카카오맵 앱 다운로드</span>
-                </h5>
-                <p class="lang-en">Google Maps is not updated with detailed walking routes or precise bus arrival times in Korea. Use Naver Map (available in English).</p>
-                <p class="lang-ko">한국에서는 구글 지도의 정밀 도보 길 찾기 및 실시간 버스 정보가 다소 제한적입니다. 네이버 지도(영문 지원)를 사용하시는 것이 훨씬 정확합니다.</p>
-              </div>
-            </div>
-            <div class="transport-step">
-              <div class="step-num">2</div>
-              <div class="step-details">
-                <h5>
-                  <span class="lang-en">Take Local Taxis</span>
-                  <span class="lang-ko">시내 택시 타기</span>
-                </h5>
-                <p class="lang-en">Taxis are affordable. Show the driver the destination in Korean characters (e.g., "하회마을" or "월영교") if they do not speak English.</p>
-                <p class="lang-ko">택시는 가장 효율적이고 경제적인 단거리 이동 수단입니다. 목적지의 한국어 명칭(예: "하회마을", "월영교")을 화면이나 캡처로 드라이버에게 보여주면 편리합니다.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Map Showcase Area -->
-      <div class="map-container">
-        <div class="map-visual"></div>
-        <div class="map-content">
-          <h4>
-            <span class="lang-en">🗺️ Ready to Explore Andong?</span>
-            <span class="lang-ko">🗺️ 안동 여행을 시작해 볼까요?</span>
-          </h4>
-          <p class="lang-en">We've pinpointed all these locations on our regional travel database. Tap below to navigate directly on Andong's tourist system mapping.</p>
-          <p class="lang-ko">안동의 전 명소를 포함하는 실시간 여행 지도 베이스를 마련해두었습니다. 아래 단추를 클릭해 실시간 네이버 지도 경로로 넘어가 보세요.</p>
-          <a href="https://map.naver.com" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">
-            <span class="lang-en">Open Naver Maps</span><span class="lang-ko">네이버 지도 열기</span>
-          </a>
         </div>
       </div>
+    </section>
+  </main>
 
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="detailModal" onclick="if(event.target === this) closeModal()">
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent">
+        <!-- Injected via script.js -->
+      </div>
     </div>
-  </section>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
 
   <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-logo">
-          <div class="logo-text">ANDONG<span>안동</span></div>
-          <div class="logo-sub">
-            <span class="lang-en">Tourism Board Information</span>
-            <span class="lang-ko">안동시 관광 안내 위원회</span>
-          </div>
-          <p class="footer-desc lang-en">Providing English navigation and schedule resources to international guests visiting Andong City, Gyeongsangbuk-do, Republic of Korea.</p>
-          <p class="footer-desc lang-ko">대한민국 경상북도 안동시를 방문하는 내외국인 관광객들에게 다채로운 관광 명소 정보 및 맞춤형 경로 빌더를 무상으로 제공합니다.</p>
-        </div>
-        <div class="footer-col">
-          <h4>
-            <span class="lang-en">Quick Links</span><span class="lang-ko">빠른 메뉴 링크</span>
-          </h4>
-          <div class="footer-links">
-            <a href="#about"><span class="lang-en">Overview</span><span class="lang-ko">개요</span></a>
-            <a href="#attractions"><span class="lang-en">Key Attractions</span><span class="lang-ko">주요 관광명소</span></a>
-            <a href="#culture"><span class="lang-en">Traditions & Food</span><span class="lang-ko">전통과 요리</span></a>
-            <a href="#planner"><span class="lang-en">Custom Timeline</span><span class="lang-ko">맞춤형 코스</span></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>
-            <span class="lang-en">Official Helplines</span><span class="lang-ko">공식 여행 고객 지원</span>
-          </h4>
-          <div class="footer-links">
-            <a href="tel:1330">
-              <span class="lang-en">📞 Korea Travel Hotline: 1330 (24/7 English support)</span>
-              <span class="lang-ko">📞 한국 여행 헬프라인: 1330 (24시간 다국어 지원)</span>
-            </a>
-            <a href="http://www.tourandong.com" target="_blank">
-              <span class="lang-en">🌐 Official Andong Tour Site</span>
-              <span class="lang-ko">🌐 안동시 공식 문화관광 포털</span>
-            </a>
-            <a href="http://www.letskorail.com" target="_blank">
-              <span class="lang-en">🎫 Book Train Tickets (Korail)</span>
-              <span class="lang-ko">🎫 코레일 열차 승차권 예매</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span class="lang-en">&copy; 2026 Andong English Travel Companion. Crafted for foreign visitors. All Rights Reserved.</span>
-        <span class="lang-ko">&copy; 2026 안동시 다국어 여행 가이드. 한국 정신 문화의 수도. All Rights Reserved.</span>
-      </div>
-    </div>
+    <p>© Discover Andong Travel Guide for Foreign Visitors. Built with pure HTML/CSS/JS (Offline File Compatible).</p>
+    <p style="margin-top: 0.5rem; color: var(--text-dim);">Emergency Tourist Helpline: Call <strong>1330</strong> (24/7 English, Japanese, Chinese support).</p>
   </footer>
 
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
-    <span class="toast-icon">🔊</span>
-    <span id="toast-text">Pronunciation playing...</span>
-  </div>
-
-  <script src="app.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
